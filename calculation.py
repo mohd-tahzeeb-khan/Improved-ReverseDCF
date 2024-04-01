@@ -1,6 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
-
+import numpy as np
 
 def get_webdata(symbol):
     symbol=symbol.upper()
@@ -27,3 +27,13 @@ def get_webdata(symbol):
         for data in tdd:
             data1=data.get_text().replace("%", "")
             profit_growth_list.append(data1) #------------------------Profit Growth
+    roce=soup.find_all( 'table',class_="data-table")[4]
+    roc=roce.find_all("tr")[6]
+    rr=roc.find_all('td')
+    rr=rr[7:12]
+    for i in rr:
+        a=i.get_text()
+        clear=a.replace("%", "")
+        intclear=int(clear)
+        roce_list.append(intclear)
+    ROCE=np.median(roce_list) #----------------------------------------ROCE   
