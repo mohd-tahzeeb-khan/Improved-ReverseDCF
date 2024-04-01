@@ -1,7 +1,10 @@
 import requests
 from bs4 import BeautifulSoup
 import numpy as np
+#<------------Imports--------------->
 
+
+#<-------------Getting All the data from the Web(Scanner.in)----------------->
 def get_webdata(symbol):
     symbol=symbol.upper()
     sales_growth_list=[]
