@@ -1,6 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
-import numpy as np
+
 
 def get_webdata(symbol):
     symbol=symbol.upper()
