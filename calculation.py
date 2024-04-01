@@ -11,4 +11,11 @@ def get_webdata(symbol):
     get_data=requests.get(getting_url)
     soup=BeautifulSoup(get_data.content, "html.parser")
     PE=soup.find_all('span', class_="number")[4].get_text() #------Current Stock Price
-    
+    sales_growth=soup.find_all('table',class_="ranges-table")[0]
+    tr=sales_growth.find_all("tr")
+    for td in tr:
+        tdd=td.find_all("td")
+        tdd=tdd[1::2]
+        for data in tdd:
+            data1=data.get_text().replace("%", "")
+            sales_growth_list.append(data1) #-----------------------Sales Growth 
