@@ -1,5 +1,5 @@
 import dash
-from dash import Dash, html, dcc
+from dash import Dash, html, dcc, Output, Input
 app=dash.Dash(__name__)
 
 
@@ -27,5 +27,25 @@ textline=html.Div([
 main=html.Div(children=[], id="main")
 #-----------------------------------------------------main App---------------------------------------------------------------------------------------------
 app.layout=html.Div([navigationbar, main])
+
+
+
+#--------------------------------------------callback Functions--------------------------------------------------------------------------
+#||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||
+
+
+
+
+#-------------------------------------------------callback function for rendering page content-----------------------------------------
+@app.callback(
+    [Output('main', 'children')],
+    Input('dropdownoption', 'value')
+)
+def renderpage(page):
+    if page=="HOME":
+        return [textline]
+    else:
+        return ["dr bro"]
+
 if __name__=='__main__':
     app.run(debug=True)
